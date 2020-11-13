@@ -1,0 +1,17 @@
+<mat-card>
+  <mat-card-content>
+    <form>
+      <h2>{{ quizQuestion.data.question }}</h2>
+
+      <section>
+        <ul>
+          <li *ngFor="let option of quizQuestion.data.options">
+            <mat-checkbox>
+              {{ option }}
+            </mat-checkbox>
+          </li>
+        </ul>
+      </section>
+    </form>
+  </mat-card-content>
+</mat-card>

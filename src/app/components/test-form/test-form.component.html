@@ -1,0 +1,27 @@
+<div class="test-form">
+  <div *ngFor="let quizQuestion of quizQuestions">
+    <div [ngSwitch]="quizQuestion.type">
+
+      <div *ngSwitchCase="questionType.ShortAnswer">
+        <app-short-answer [data]="quizQuestion"></app-short-answer>
+      </div>
+
+      <div *ngSwitchCase="questionType.LongAnswer">
+        <app-long-answer [data]="quizQuestion"></app-long-answer>
+      </div>
+
+      <div *ngSwitchCase="questionType.SingleChoice">
+        <app-single-choice [data]="quizQuestion"></app-single-choice>
+      </div>
+
+      <div *ngSwitchCase="questionType.MultipleChoice">
+        <app-multiple-choice [data]="quizQuestion"></app-multiple-choice>
+      </div>
+
+      <div *ngSwitchCase="questionType.DropdownChoice">
+        <app-dropdown-choice [data]="quizQuestion"></app-dropdown-choice>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -6,14 +6,16 @@ export const QUIZ_QUESTIONS = [
     type: QuestionType.ShortAnswer,
     id: '1',
     data: {
-      question: 'This is short answer'
+      question: 'This is short answer',
+      rightAnswer: 'short'
     }
   },
   {
     type: QuestionType.LongAnswer,
     id: '2',
     data: {
-      question: 'This is long answer'
+      question: 'This is long answer',
+      rightAnswer: 'long'
     }
   },
   {
@@ -21,6 +23,7 @@ export const QUIZ_QUESTIONS = [
     id: '3',
     data: {
       question: 'This is short answer',
+      rightAnswer: 1,
       options: [
         'option one',
         'option two',
@@ -34,6 +37,7 @@ export const QUIZ_QUESTIONS = [
     id: '4',
     data: {
       question: 'This is long answer',
+      rightAnswer: 0,
       options: [
         'option one',
         'option two',
@@ -47,6 +51,7 @@ export const QUIZ_QUESTIONS = [
     id: '5',
     data: {
       question: 'This is long answer',
+      rightAnswer: 3,
       options: [
         'option one',
         'option two',
@@ -59,14 +64,16 @@ export const QUIZ_QUESTIONS = [
     type: QuestionType.ShortAnswer,
     id: '6',
     data: {
-      question: 'This is short answer'
+      question: 'This is short answer',
+      rightAnswer: 'short'
     }
   },
   {
     type: QuestionType.LongAnswer,
     id: '7',
     data: {
-      question: 'This is long answer'
+      question: 'This is long answer',
+      rightAnswer: 'long'
     }
   },
   {
@@ -74,6 +81,7 @@ export const QUIZ_QUESTIONS = [
     id: '8',
     data: {
       question: 'This is short answer',
+      rightAnswer: 'short',
       options: [
         'option one',
         'option two',
@@ -87,6 +95,7 @@ export const QUIZ_QUESTIONS = [
     id: '9',
     data: {
       question: 'This is long answer',
+      rightAnswer: 'long',
       options: [
         'option one',
         'option two',
@@ -100,6 +109,7 @@ export const QUIZ_QUESTIONS = [
     id: '10',
     data: {
       question: 'This is long answer',
+      rightAnswer: 3,
       options: [
         'option one',
         'option two',

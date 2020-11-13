@@ -3,23 +3,23 @@
     <div [ngSwitch]="quizQuestion.type">
 
       <div *ngSwitchCase="questionType.ShortAnswer">
-        <app-short-answer [data]="quizQuestion"></app-short-answer>
+        <app-short-answer [data]="quizQuestion" (onAnswer)="updateAnswers($event)"></app-short-answer>
       </div>
 
       <div *ngSwitchCase="questionType.LongAnswer">
-        <app-long-answer [data]="quizQuestion"></app-long-answer>
+        <app-long-answer [data]="quizQuestion" (onAnswer)="updateAnswers($event)"></app-long-answer>
       </div>
 
       <div *ngSwitchCase="questionType.SingleChoice">
-        <app-single-choice [data]="quizQuestion"></app-single-choice>
+        <app-single-choice [data]="quizQuestion" (onAnswer)="updateAnswers($event)"></app-single-choice>
       </div>
 
       <div *ngSwitchCase="questionType.MultipleChoice">
-        <app-multiple-choice [data]="quizQuestion"></app-multiple-choice>
+        <app-multiple-choice [data]="quizQuestion" (onAnswer)="updateAnswers($event)"></app-multiple-choice>
       </div>
 
       <div *ngSwitchCase="questionType.DropdownChoice">
-        <app-dropdown-choice [data]="quizQuestion"></app-dropdown-choice>
+        <app-dropdown-choice [data]="quizQuestion" (onAnswer)="updateAnswers($event)"></app-dropdown-choice>
       </div>
 
     </div>

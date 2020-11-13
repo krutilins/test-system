@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
-import { FormBuilder, FormGroup } from '@angular/forms'
 import { QuizQuestion } from 'src/app/models/quiz-quesiton.model'
+import { ShortAnswer } from 'src/app/models/short-answer.model'
 
 @Component({
   selector: 'app-short-answer',
@@ -8,20 +8,21 @@ import { QuizQuestion } from 'src/app/models/quiz-quesiton.model'
   styleUrls: ['./short-answer.component.scss']
 })
 export class ShortAnswerComponent implements OnInit {
-  @Input('data') quizQuestion
+  @Input() data: QuizQuestion<ShortAnswer>;
 
-  @Output() newItemEvent = new EventEmitter()
-  form: FormGroup
+  @Output() onAnswer = new EventEmitter<string>();
+
+  answer: string = '';
 
   constructor() {
 
   }
 
-  ngOnInit() {
-
+  answerQuestion() {
+    this.onAnswer.emit(this.answer);
   }
 
-  addNewItem(value: string) {
-    this.newItemEvent.emit(value)
+  ngOnInit() {
+
   }
 }

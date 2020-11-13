@@ -3,13 +3,18 @@
     <form>
       <h2>{{ quizQuestion.data.question }}</h2>
       <section>
-        <ul>
-          <li *ngFor="let option of quizQuestion.data.options">
-            <mat-radio-button>
-              {{ option }}
-            </mat-radio-button>
-          </li>
-        </ul>
+        <mat-radio-group
+          [(ngModel)]="selectedAnswer"
+          [ngModelOptions]="{ standalone: true }"
+          (change)="answerQuestion()"
+        >
+          <mat-radio-button
+            *ngFor="let option of quizQuestion.data.options; index as id"
+            [value]="id"
+          >
+            {{ option }}
+          </mat-radio-button>
+        </mat-radio-group>
       </section>
     </form>
   </mat-card-content>

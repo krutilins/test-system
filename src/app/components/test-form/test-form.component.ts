@@ -12,14 +12,17 @@ import { QUIZ_QUESTIONS } from './test-form.config';
 export class TestFromComponent implements OnInit {
   @Input() quizQuestions: QuizQuestion[]
   questionType = QuestionType
-  type = QuestionType
-
 
   constructor() {
-    this.quizQuestions = QUIZ_QUESTIONS
+    this.quizQuestions = QUIZ_QUESTIONS;
+    console.log(this.quizQuestions)
   }
 
   ngOnInit() {
 
+  }
+
+  updateAnswers($event) {
+    console.log($event)
   }
 }

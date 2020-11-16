@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core'
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { QuizQuestion } from 'src/app/models/quiz-quesiton.model'
 
 @Component({
@@ -7,10 +7,18 @@ import { QuizQuestion } from 'src/app/models/quiz-quesiton.model'
   styleUrls: ['./dropdown-choice.component.scss']
 })
 export class DropdownChoiceComponent implements OnInit {
-  @Input('data') quizQuestion
+  @Input() data;
+
+  @Output() onAnswer = new EventEmitter<number>();
+
+  selectedAnswer: number;
 
   constructor() {
 
+  }
+
+  answerQuestion() {
+    this.onAnswer.emit(this.selectedAnswer);
   }
 
   ngOnInit() {

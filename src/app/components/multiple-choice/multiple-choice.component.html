@@ -5,9 +5,13 @@
 
       <section>
         <ul>
-          <li *ngFor="let option of quizQuestion.data.options">
-            <mat-checkbox>
-              {{ option }}
+          <li *ngFor="let option of options">
+            <mat-checkbox
+              [(ngModel)]="option.checked"
+              [ngModelOptions]="{ standalone: true }"
+              (ngModelChange)="answerQuestion()"
+            >
+              {{ option.text }}
             </mat-checkbox>
           </li>
         </ul>

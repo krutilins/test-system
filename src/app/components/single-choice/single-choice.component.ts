@@ -1,4 +1,4 @@
-import {Component, OnInit, Input } from '@angular/core'
+import {Component, OnInit, Input, Output, EventEmitter } from '@angular/core'
 
 @Component({
   selector: 'app-single-choice',
@@ -8,8 +8,15 @@ import {Component, OnInit, Input } from '@angular/core'
 export class SingleChoiceComponent implements OnInit {
   @Input('data') quizQuestion
 
-  constructor() {
+  @Output() onAnswer = new EventEmitter<string>();
 
+  selectedAnswer: string = '';
+
+  constructor() {
+  }
+
+  answerQuestion() {
+    this.onAnswer.emit(this.selectedAnswer);
   }
 
   ngOnInit() {

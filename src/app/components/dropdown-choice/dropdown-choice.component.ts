@@ -18,7 +18,6 @@ export class DropdownChoiceComponent implements OnInit {
   }
 
   answerQuestion() {
-    console.log("it works")
     this.onAnswer.emit(this.selectedAnswer);
   }
 

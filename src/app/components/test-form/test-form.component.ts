@@ -15,7 +15,6 @@ export class TestFromComponent implements OnInit {
 
   constructor() {
     this.quizQuestions = QUIZ_QUESTIONS;
-    console.log(this.quizQuestions)
   }
 
   ngOnInit() {

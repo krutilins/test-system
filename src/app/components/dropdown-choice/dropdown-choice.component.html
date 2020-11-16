@@ -4,11 +4,14 @@
       <h2>{{ data.data.question }}</h2>
       <mat-form-field appearance="fill">
         <mat-label>Select</mat-label>
-        <mat-select [(ngModel)]="selectedAnswer" [ngModelOptions]="{ standalone: true }">
+        <mat-select
+          [(ngModel)]="selectedAnswer"
+          [ngModelOptions]="{ standalone: true }"
+          (ngModelChange)="answerQuestion()"
+        >
           <mat-option
             *ngFor="let option of data.data.options; index as id"
             [value]="id"
-            (ngModelChange)="answerQuestion()"
           >
             {{ option }}
           </mat-option>

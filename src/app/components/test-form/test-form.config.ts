@@ -22,7 +22,7 @@ export const QUIZ_QUESTIONS = [
     type: QuestionType.SingleChoice,
     id: '3',
     data: {
-      question: 'This is short answer',
+      question: 'This is single choice',
       rightAnswer: 1,
       options: [
         'option one',
@@ -36,7 +36,7 @@ export const QUIZ_QUESTIONS = [
     type: QuestionType.MultipleChoice,
     id: '4',
     data: {
-      question: 'This is long answer',
+      question: 'This is multiple choice',
       rightAnswer: 0,
       options: [
         'option one',
@@ -50,7 +50,7 @@ export const QUIZ_QUESTIONS = [
     type: QuestionType.DropdownChoice,
     id: '5',
     data: {
-      question: 'This is long answer',
+      question: 'This is dropdown',
       rightAnswer: 3,
       options: [
         'option one',
@@ -80,7 +80,7 @@ export const QUIZ_QUESTIONS = [
     type: QuestionType.SingleChoice,
     id: '8',
     data: {
-      question: 'This is short answer',
+      question: 'This is single choice',
       rightAnswer: 'short',
       options: [
         'option one',
@@ -94,7 +94,7 @@ export const QUIZ_QUESTIONS = [
     type: QuestionType.MultipleChoice,
     id: '9',
     data: {
-      question: 'This is long answer',
+      question: 'This is multiple choice',
       rightAnswer: 'long',
       options: [
         'option one',
@@ -108,7 +108,7 @@ export const QUIZ_QUESTIONS = [
     type: QuestionType.DropdownChoice,
     id: '10',
     data: {
-      question: 'This is long answer',
+      question: 'This is dropdown',
       rightAnswer: 3,
       options: [
         'option one',

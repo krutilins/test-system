@@ -1,5 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
-import { QuizQuestion } from 'src/app/models/quiz-quesiton.model'
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-dropdown-choice',
@@ -10,6 +9,8 @@ export class DropdownChoiceComponent implements OnInit {
   @Input() data;
 
   @Output() onAnswer = new EventEmitter<number>();
+
+  @Input() editable: boolean = false;
 
   selectedAnswer: number;
 
@@ -22,6 +23,6 @@ export class DropdownChoiceComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    console.log(this.editable)
   }
 }

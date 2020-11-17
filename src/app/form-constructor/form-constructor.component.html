@@ -1,0 +1,74 @@
+<p>constructor works</p>
+
+<div
+  *ngFor="let formSection of formSections"
+  cdkDropListGroup
+  class="form-constructor"
+>
+  <div class="form-constructor__container">
+    <div class="form-constructor__section-editor">
+      <mat-form-field>
+        <input
+          matInput
+          [(ngModel)]="formSection.sectionTitle"
+          [ngModelOptions]="{ standalone: true }"
+          placeholder="Section Title"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <input
+          matInput
+          [(ngModel)]="formSection.sectionSubtitle"
+          [ngModelOptions]="{ standalone: true }"
+          placeholder="Form description"
+        />
+      </mat-form-field>
+    </div>
+    <button mat-button (click)="addQuestion(formSection)">Add question</button>
+    <div
+      cdkDropList
+      [cdkDropListData]="formSection.questionList"
+      (cdkDropListDropped)="drop($event)"
+      class="form-constructor__list"
+    >
+      <div *ngFor="let question of formSection.questionList" class="form-constructor__question-box" cdkDrag>
+
+        <div [ngSwitch]="question.type">
+
+            <div *ngSwitchCase="questionType.ShortAnswer">
+              <form-constructor-short-answer-creator></form-constructor-short-answer-creator>
+            </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div cdkDropListGroup>
+  <div class="example-container">
+    <h2>To do</h2>
+
+    <div
+      cdkDropList
+      [cdkDropListData]="todo"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+    </div>
+  </div>
+
+  <div class="example-container">
+    <h2>Done</h2>
+
+    <div
+      cdkDropList
+      [cdkDropListData]="done"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core'
-import { TestCard } from 'src/app/models/test-card.model'
-import { TEST_CARDS } from './test-list.config'
+import { Component, OnInit } from '@angular/core';
+import { TestCard } from 'src/app/models/test-card.model';
+import { TEST_CARDS } from './test-list.config';
 
 @Component({
   selector: 'app-test-list',

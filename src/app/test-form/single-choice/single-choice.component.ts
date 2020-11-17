@@ -8,6 +8,7 @@ import {Component, OnInit, Input, Output, EventEmitter } from '@angular/core'
 export class SingleChoiceComponent implements OnInit {
   @Input('data') quizQuestion
 
+
   @Output() onAnswer = new EventEmitter<string>();
 
   selectedAnswer: string = '';

@@ -1,0 +1,31 @@
+<mat-card>
+  <mat-card-content>
+    <form>
+      <mat-form-field>
+        <input matInput [(ngModel)]="question" (blur)="updateQuestion()" />
+      </mat-form-field>
+      <section>
+        <mat-radio-group>
+          <mat-radio-button
+            *ngFor="let option of options; index as i"
+            aria-disabled
+          >
+            <mat-form-field>
+              <input
+                matInput
+                [(ngModel)]="options[i]"
+                (blur)="updateOptions()"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </mat-form-field>
+          </mat-radio-button>
+          <mat-radio-button aria-disabled>
+            <mat-form-field>
+              <input matInput (blur)="addOption()" />
+            </mat-form-field>
+          </mat-radio-button>
+        </mat-radio-group>
+      </section>
+    </form>
+  </mat-card-content>
+</mat-card>

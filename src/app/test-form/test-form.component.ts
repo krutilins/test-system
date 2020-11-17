@@ -9,7 +9,7 @@ import { QUIZ_QUESTIONS } from './test-form.config';
   templateUrl: './test-form.component.html',
   styleUrls: ['./test-form.component.scss']
 })
-export class TestFromComponent implements OnInit {
+export class TestFormComponent implements OnInit {
   @Input() quizQuestions: QuizQuestion[]
   questionType = QuestionType
 
@@ -22,6 +22,6 @@ export class TestFromComponent implements OnInit {
   }
 
   updateAnswers($event) {
-    console.log($event)
+
   }
 }

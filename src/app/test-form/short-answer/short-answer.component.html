@@ -4,7 +4,12 @@
       <h2>{{ data.data.question }}</h2>
       <mat-form-field>
         <mat-label>Answer</mat-label>
-        <input matInput [(ngModel)]="answer" (input)="answerQuestion()" [ngModelOptions]="{standalone: true}">
+        <input
+          matInput
+          [(ngModel)]="answer"
+          (input)="answerQuestion()"
+          [ngModelOptions]="{ standalone: true }"
+        />
       </mat-form-field>
     </form>
   </mat-card-content>

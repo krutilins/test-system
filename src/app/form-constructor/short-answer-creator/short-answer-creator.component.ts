@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ShortAnswer } from 'src/app/models/short-answer.model';
 
 @Component({
@@ -9,18 +10,18 @@ import { ShortAnswer } from 'src/app/models/short-answer.model';
 export class ShortAnswerCreatorComponent implements OnInit {
   @Output() onBlur = new EventEmitter<ShortAnswer>()
 
-  question: string = 'Untitled question'
+  form: FormGroup;
 
   constructor() {  }
 
   ngOnInit() {
-
+    this.form = new FormGroup({
+      question: new FormControl('Untitled question')
+    })
   }
 
   updateQuestion() {
-    this.onBlur.emit({
-      question: this.question
-    });
+    this.onBlur.emit(this.form.value);
   }
 
 }

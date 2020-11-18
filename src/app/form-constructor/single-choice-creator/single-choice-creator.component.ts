@@ -1,4 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { SingleChoice } from 'src/app/models/single-choice.model';
 
 @Component({
   selector: 'form-constructor-single-choice-creator',
@@ -7,26 +9,34 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 
 export class SingleChoiceCreatorComponent implements OnInit {
-  question: string = "Untitle question";
-  @Output() questionChange = new EventEmitter();
+  @Output() questionChange = new EventEmitter<SingleChoice>();
 
-  options: string[] = [];
-  @Output() optionsChange = new EventEmitter();
+  @Output() optionsChange = new EventEmitter<SingleChoice>();
 
+  form: FormGroup;
+
+  options: FormArray = new FormArray([
+    new FormControl('Option')
+  ])
 
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.form = new FormGroup({
+      question: new FormControl('Untitled question'),
+      options: this.options
+    })
+  }
 
   updateQuestion() {
-    this.questionChange.emit(this.question);
+    this.questionChange.emit(this.form.value);
   }
 
   updateOptions() {
-    this.optionsChange.emit(this.options);
+    this.optionsChange.emit(this.form.value);
   }
 
   addOption() {
-    this.options.push('option');
+    (<FormArray>this.form.get('options')).push(new FormControl('Option'))
   }
 }

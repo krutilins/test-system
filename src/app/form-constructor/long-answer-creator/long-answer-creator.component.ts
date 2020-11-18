@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { LongAnswer } from 'src/app/models/long-answer.model';
 
 @Component({
   selector: 'form-constructor-long-answer-creator',
@@ -7,7 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class LongAnswerCreatorComponent implements OnInit {
-  constructor() { }
+  @Output() onBlur = new EventEmitter<LongAnswer>()
 
-  ngOnInit() { }
+  form: FormGroup;
+
+  constructor() {  }
+
+  ngOnInit() {
+    this.form = new FormGroup({
+      question: new FormControl('Untitled question')
+    })
+  }
+
+  updateQuestion() {
+    this.onBlur.emit(this.form.value);
+  }
 }

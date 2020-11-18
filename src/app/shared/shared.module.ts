@@ -12,7 +12,8 @@ import { MaterialModule } from './material/material.module';
   providers: [],
   exports: [
     FormsModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule,
   ]
 })
 export class SharedModule {

@@ -1,4 +1,4 @@
-export interface SingleChoice {
+export interface Dropdown {
   question: string;
   options: string[];
 }

@@ -1,29 +1,32 @@
 <mat-card>
   <mat-card-content>
-    <form>
+    <form [formGroup]="form">
       <mat-form-field>
-        <input matInput [(ngModel)]="question" (blur)="updateQuestion()" />
+        <textarea
+          matInput
+          cdktextareaAutosize
+          placeholder="Question"
+          formControlName="question"
+          (blur)="updateQuestion()"
+        ></textarea>
       </mat-form-field>
-      <section>
+
+      <section formGroupName="options">
         <mat-radio-group>
           <mat-radio-button
-            *ngFor="let option of options; index as i"
-            aria-disabled
+            *ngFor="let option of options.controls; index as id"
+            disabled
           >
             <mat-form-field>
               <input
                 matInput
-                [(ngModel)]="options[i]"
-                (blur)="updateOptions()"
-                [ngModelOptions]="{ standalone: true }"
+                [value]="option.value"
+                [formControlName]="id"
+                (blur)="updateOptions($event)"
               />
             </mat-form-field>
           </mat-radio-button>
-          <mat-radio-button aria-disabled>
-            <mat-form-field>
-              <input matInput (blur)="addOption()" />
-            </mat-form-field>
-          </mat-radio-button>
+          <button mat-button (click)="addOption()">Add option</button>
         </mat-radio-group>
       </section>
     </form>

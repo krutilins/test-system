@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core'
+import { ActivatedRoute } from '@angular/router';
 import { QuestionType } from 'src/app/models/question-type.model';
-import { QuizQuestion } from 'src/app/models/quiz-quesiton.model';
-import { QUIZ_QUESTIONS } from './test-form.config';
-
+import { TestForm } from '../models/test-form.model';
+import { TestResult } from '../models/test-result.model';
+import { FormDataService } from '../services/form-data.service';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-test-form',
@@ -10,18 +12,24 @@ import { QUIZ_QUESTIONS } from './test-form.config';
   styleUrls: ['./test-form.component.scss']
 })
 export class TestFormComponent implements OnInit {
-  @Input() quizQuestions: QuizQuestion[]
-  questionType = QuestionType
+  testForm: TestForm;
+  questionType = QuestionType;
+  testAnswers: TestResult;
 
-  constructor() {
-    this.quizQuestions = QUIZ_QUESTIONS;
+  constructor(private formDataService: FormDataService, private router: ActivatedRoute) {
+    this.formDataService.getForm(this.router.snapshot.params.id).subscribe(
+      response => {
+        this.testForm = response[0];
+
+      }
+    )
   }
 
   ngOnInit() {
 
   }
 
-  updateAnswers($event) {
-
+  updateAnswers($event, id) {
+    
   }
 }

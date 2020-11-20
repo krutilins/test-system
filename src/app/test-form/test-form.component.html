@@ -1,27 +1,45 @@
 <div class="test-form">
-  <div *ngFor="let quizQuestion of quizQuestions">
-    <div [ngSwitch]="quizQuestion.type">
 
-      <div *ngSwitchCase="questionType.ShortAnswer">
-        <app-short-answer [data]="quizQuestion" (onAnswer)="updateAnswers($event)"></app-short-answer>
+    <div *ngFor="let formSection of testForm?.formSections">
+      <h2>{{ formSection.sectionTitle }}</h2>
+      <h3>{{ formSection.sectionSubtitle }}</h3>
+      <div *ngFor="let quizQuestion of formSection.questionList; index as id">
+        <div [ngSwitch]="quizQuestion.type">
+          <div *ngSwitchCase="questionType.ShortAnswer">
+            <app-short-answer
+              [data]="quizQuestion"
+              (onAnswer)="updateAnswers($event, id)"
+            ></app-short-answer>
+          </div>
+
+          <div *ngSwitchCase="questionType.LongAnswer">
+            <app-long-answer
+              [data]="quizQuestion"
+              (onAnswer)="updateAnswers($event, id)"
+            ></app-long-answer>
+          </div>
+
+          <div *ngSwitchCase="questionType.SingleChoice">
+            <app-single-choice
+              [data]="quizQuestion"
+              (onAnswer)="updateAnswers($event, id)"
+            ></app-single-choice>
+          </div>
+
+          <div *ngSwitchCase="questionType.MultipleChoice">
+            <app-multiple-choice
+              [data]="quizQuestion"
+              (onAnswer)="updateAnswers($event, id)"
+            ></app-multiple-choice>
+          </div>
+
+          <div *ngSwitchCase="questionType.DropdownChoice">
+            <app-dropdown-choice
+              [data]="quizQuestion"
+              (onAnswer)="updateAnswers($event, id)"
+            ></app-dropdown-choice>
+          </div>
+        </div>
       </div>
-
-      <div *ngSwitchCase="questionType.LongAnswer">
-        <app-long-answer [data]="quizQuestion" (onAnswer)="updateAnswers($event)"></app-long-answer>
-      </div>
-
-      <div *ngSwitchCase="questionType.SingleChoice">
-        <app-single-choice [data]="quizQuestion" (onAnswer)="updateAnswers($event)"></app-single-choice>
-      </div>
-
-      <div *ngSwitchCase="questionType.MultipleChoice">
-        <app-multiple-choice [data]="quizQuestion" (onAnswer)="updateAnswers($event)"></app-multiple-choice>
-      </div>
-
-      <div *ngSwitchCase="questionType.DropdownChoice">
-        <app-dropdown-choice [data]="quizQuestion" (onAnswer)="updateAnswers($event)"></app-dropdown-choice>
-      </div>
-
     </div>
-  </div>
 </div>

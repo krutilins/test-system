@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TestCard } from 'src/app/models/test-card.model';
-import { TEST_CARDS } from './test-list.config';
+import { FormDataService } from 'src/app/services/form-data.service';
 
 @Component({
   selector: 'app-test-list',
@@ -8,10 +8,14 @@ import { TEST_CARDS } from './test-list.config';
   styleUrls: ['./test-list.component.scss']
 })
 export class TestListComponent implements OnInit {
-  testCards: TestCard[]
+  testCards: TestCard[];
 
-  constructor() {
-    this.testCards = TEST_CARDS;
+  constructor(private formDataService: FormDataService) {
+    formDataService.getTestCards().subscribe(
+      response => {
+        this.testCards = response
+      }
+    )
   }
 
   ngOnInit() {

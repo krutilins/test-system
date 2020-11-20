@@ -13,6 +13,7 @@ import { TestHistoryComponent } from './components/test-history/test-history.com
 import { FormConstructorModule } from './form-constructor/form-constructor.module';
 import { SharedModule } from './shared/shared.module';
 import { TestFormModule } from './test-form/test-form.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { TestFormModule } from './test-form/test-form.module';
     TestFormModule,
     AppRoutingModule,
     FormConstructorModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

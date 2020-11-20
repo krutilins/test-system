@@ -10,7 +10,7 @@ import { ShortAnswer } from 'src/app/models/short-answer.model'
 export class ShortAnswerComponent implements OnInit {
   @Input() data: QuizQuestion<ShortAnswer>;
 
-  @Output() onAnswer = new EventEmitter<string>();
+  @Output() onAnswer = new EventEmitter();
 
   answer: string = '';
 
@@ -19,7 +19,10 @@ export class ShortAnswerComponent implements OnInit {
   }
 
   answerQuestion() {
-    this.onAnswer.emit(this.answer);
+    this.onAnswer.emit({
+      question: this.data,
+      answer: this.answer
+    });
   }
 
   ngOnInit() {

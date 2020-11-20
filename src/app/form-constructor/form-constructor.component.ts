@@ -1,34 +1,32 @@
 import { Component, OnInit } from '@angular/core';
-import { FormSection } from 'src/app/models/form-section.model';
-import { QuestionType } from 'src/app/models/question-type.model';
-import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { FormDataService } from '../services/form-data.service';
+import { TestForm } from '../models/test-form.model';
+import { v4 as uuidv4 } from 'uuid';
+
 @Component({
   selector: 'app-constructor',
   templateUrl: './form-constructor.component.html',
   styleUrls: ['./form-constructor.component.scss']
 })
 export class FormConstructorComponent implements OnInit {
-  formSections: FormSection[] = [
-    {
-      sectionTitle: '',
-      sectionSubtitle: '',
-      questionList: []
+  testForm: TestForm;
+  id: string;
+
+  constructor(private formDataService: FormDataService) {
+    this.id = uuidv4();
+    this.testForm = {
+      id: this.id,
+      title: "Untitled",
+      formSections: [
+        {
+          sectionTitle: '',
+          sectionSubtitle: '',
+          questionList: []
+        }
+      ]
     }
-  ];
-
-  questionType = QuestionType;
-
-  counter: number = 0;
-
-  options: string[] = [
-    'Short answer',
-    'Long answer',
-    'Single choice',
-    'Multiple choice',
-    'Dropdown'
-  ]
-
-  constructor() { }
+  }
 
   ngOnInit() { }
 
@@ -37,30 +35,40 @@ export class FormConstructorComponent implements OnInit {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
       transferArrayItem(event.previousContainer.data,
-                        event.container.data,
-                        event.previousIndex,
-                        event.currentIndex);
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
     }
   }
 
-  updateQuestionList() {
-    console.log(this.formSections[0].sectionTitle);
-  }
-
-  addQuestion(formSection: FormSection) {
-    this.counter++;
-    formSection.questionList.push({
-      type: this.questionType.ShortAnswer,
-      id: this.counter.toString(),
-      data: []
-    })
-  }
-
   addSection() {
-    this.formSections.push(    {
+    this.testForm.formSections.push({
       sectionTitle: '',
       sectionSubtitle: '',
       questionList: []
     })
+  }
+
+  postForm() {
+    this.formDataService.addTestCard({
+      id: this.id,
+      title: this.testForm.title
+    }).subscribe(response => console.log(response))
+
+    this.formDataService.addForm(this.testForm)
+      .subscribe(() => {
+        this.testForm = this.id = uuidv4();
+        this.testForm = {
+          id: this.id,
+          title: "Untitled",
+          formSections: [
+            {
+              sectionTitle: '',
+              sectionSubtitle: '',
+              questionList: []
+            }
+          ]
+        }
+      });
   }
 }

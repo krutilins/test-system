@@ -33,7 +33,6 @@ export class DropdownCreatorComponent implements OnInit {
   }
 
   updateOptions() {
-    console.log(this.form.value)
     this.optionsChange.emit(this.form.value);
   }
 

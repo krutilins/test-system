@@ -10,9 +10,11 @@ import { LongAnswerCreatorComponent } from './long-answer-creator/long-answer-cr
 import { ShortAnswerCreatorComponent } from './short-answer-creator/short-answer-creator.component';
 import { SingleChoiceCreatorComponent } from './single-choice-creator/single-choice-creator.component';
 import { MultipleChoiceCreatorComponent } from './multiple-choice-creator/multiple-choice-creator.component';
+import { FormSectionCreatorComponent } from './form-section-creator/form-section-creator.component';
 
 @NgModule({
   declarations: [
+    FormSectionCreatorComponent,
     FormConstructorComponent,
     DropdownCreatorComponent,
     LongAnswerCreatorComponent,

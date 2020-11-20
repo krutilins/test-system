@@ -6,10 +6,10 @@ import {Component, OnInit, Input, Output, EventEmitter } from '@angular/core'
   styleUrls: ['./single-choice.component.scss']
 })
 export class SingleChoiceComponent implements OnInit {
-  @Input('data') quizQuestion
+  @Input() data
 
 
-  @Output() onAnswer = new EventEmitter<string>();
+  @Output() onAnswer = new EventEmitter();
 
   selectedAnswer: string = '';
 
@@ -17,7 +17,10 @@ export class SingleChoiceComponent implements OnInit {
   }
 
   answerQuestion() {
-    this.onAnswer.emit(this.selectedAnswer);
+    this.onAnswer.emit({
+      question: this.data,
+      answer: this.selectedAnswer
+    });
   }
 
   ngOnInit() {

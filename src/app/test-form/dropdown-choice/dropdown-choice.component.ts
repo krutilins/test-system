@@ -8,7 +8,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class DropdownChoiceComponent implements OnInit {
   @Input() data;
 
-  @Output() onAnswer = new EventEmitter<number>();
+  @Output() onAnswer = new EventEmitter();
 
   @Input() editable: boolean = false;
 
@@ -19,10 +19,13 @@ export class DropdownChoiceComponent implements OnInit {
   }
 
   answerQuestion() {
-    this.onAnswer.emit(this.selectedAnswer);
+    this.onAnswer.emit({
+      question: this.data,
+      answer: this.selectedAnswer
+    });
   }
 
   ngOnInit() {
-    console.log(this.editable)
+    
   }
 }

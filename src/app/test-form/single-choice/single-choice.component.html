@@ -1,7 +1,7 @@
 <mat-card>
   <mat-card-content>
     <form>
-      <h2>{{ quizQuestion.data.question }}</h2>
+      <h2>{{ data.data.question }}</h2>
       <section>
         <mat-radio-group
           [(ngModel)]="selectedAnswer"
@@ -9,7 +9,7 @@
           (change)="answerQuestion()"
         >
           <mat-radio-button
-            *ngFor="let option of quizQuestion.data.options; index as id"
+            *ngFor="let option of data.data.options; index as id"
             [value]="id"
           >
             {{ option }}

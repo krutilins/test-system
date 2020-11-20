@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core'
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
 import { MultipleChoice } from 'src/app/models/multiple-choice.model'
 import { QuizQuestion } from 'src/app/models/quiz-quesiton.model'
 
@@ -23,7 +23,10 @@ export class MultipleChoiceComponent implements OnInit {
   }
 
   answerQuestion() {
-    this.onAnswer.emit(this.options.filter(item => item.checked))
+    this.onAnswer.emit({
+      question: this.quizQuestion,
+      answer: this.options.filter(item => item.checked)
+    })
   }
 
   ngOnInit() {

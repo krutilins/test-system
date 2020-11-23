@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Dropdown } from 'src/app/models/dropdown.model';
 
 @Component({
   selector: 'app-dropdown-choice',
@@ -6,7 +7,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./dropdown-choice.component.scss']
 })
 export class DropdownChoiceComponent implements OnInit {
-  @Input() data;
+  @Input() data: Dropdown;
 
   @Output() onAnswer = new EventEmitter();
 
@@ -20,12 +21,12 @@ export class DropdownChoiceComponent implements OnInit {
 
   answerQuestion() {
     this.onAnswer.emit({
-      question: this.data,
+      question: this.data.question,
       answer: this.selectedAnswer
     });
   }
 
   ngOnInit() {
-    
+
   }
 }

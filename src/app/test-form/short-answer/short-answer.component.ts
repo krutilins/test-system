@@ -8,7 +8,7 @@ import { ShortAnswer } from 'src/app/models/short-answer.model'
   styleUrls: ['./short-answer.component.scss']
 })
 export class ShortAnswerComponent implements OnInit {
-  @Input() data: QuizQuestion<ShortAnswer>;
+  @Input() data: ShortAnswer;
 
   @Output() onAnswer = new EventEmitter();
 
@@ -20,7 +20,7 @@ export class ShortAnswerComponent implements OnInit {
 
   answerQuestion() {
     this.onAnswer.emit({
-      question: this.data,
+      question: this.data.question,
       answer: this.answer
     });
   }

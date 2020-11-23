@@ -12,7 +12,7 @@ interface Option {
   styleUrls: ['./multiple-choice.component.scss']
 })
 export class MultipleChoiceComponent implements OnInit {
-  @Input('data') quizQuestion: QuizQuestion<MultipleChoice>
+  @Input() data: MultipleChoice;
 
   @Output() onAnswer = new EventEmitter()
 
@@ -24,13 +24,15 @@ export class MultipleChoiceComponent implements OnInit {
 
   answerQuestion() {
     this.onAnswer.emit({
-      question: this.quizQuestion,
-      answer: this.options.filter(item => item.checked)
+      question: this.data.question,
+      answer: this.options.filter(option => option.checked).map(option => {
+        return option.text
+      }).join(', ')
     })
   }
 
   ngOnInit() {
-    this.quizQuestion.data.options.forEach((item) => {
+    this.data.options.forEach((item) => {
       this.options.push({
         text: item,
         checked: false

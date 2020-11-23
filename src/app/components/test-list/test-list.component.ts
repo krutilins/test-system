@@ -8,10 +8,10 @@ import { FormDataService } from 'src/app/services/form-data.service';
   styleUrls: ['./test-list.component.scss']
 })
 export class TestListComponent implements OnInit {
-  testCards: TestCard[];
+  testCards: TestCard[] = [];
 
   constructor(private formDataService: FormDataService) {
-    formDataService.getTestCards().subscribe(
+    this.formDataService.getTestCards().subscribe(
       response => {
         this.testCards = response
       }

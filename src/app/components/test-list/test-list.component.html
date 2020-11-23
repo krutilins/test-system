@@ -1,3 +1,7 @@
+<div *ngIf="!testCards.length">
+  Test list is empty
+</div>
+
 <div *ngFor="let testCard of testCards">
   <app-test-card [testCard]="testCard"></app-test-card>
 </div>

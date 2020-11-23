@@ -8,9 +8,9 @@ import { QuizQuestion } from 'src/app/models/quiz-quesiton.model'
   styleUrls: ['./long-answer.component.scss']
 })
 export class LongAnswerComponent implements OnInit {
-  @Input() data: QuizQuestion<LongAnswer>;
+  @Input() data: LongAnswer;
 
-  @Output() onAnswer = new EventEmitter<string>();
+  @Output() onAnswer = new EventEmitter();
 
   answer: string
 
@@ -19,7 +19,10 @@ export class LongAnswerComponent implements OnInit {
   }
 
   answerQuestion() {
-    this.onAnswer.emit(this.answer);
+    this.onAnswer.emit({
+      question: this.data.question,
+      answer: this.answer
+    });
   }
 
   ngOnInit() {

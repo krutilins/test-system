@@ -3,7 +3,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
     MaterialModule,
     FormsModule,
@@ -13,7 +14,7 @@ import { MaterialModule } from './material/material.module';
   exports: [
     FormsModule,
     MaterialModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule
   ]
 })
 export class SharedModule {

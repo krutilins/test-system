@@ -1,0 +1,15 @@
+<div class="test-form">
+  <div>
+    <h1>{{ testResult?.title }}</h1>
+  </div>
+  <div *ngFor="let section of testResult?.sections">
+    <h2>{{ section.title }}</h2>
+    <h3>{{ section.subtitle }}</h3>
+    <div *ngFor="let quizAnswer of section.quizAnswers;">
+      <mat-card>
+        <div>Question: {{ quizAnswer.question }}</div>
+        <div>Answer: {{ quizAnswer.answer }}</div>
+      </mat-card>
+    </div>
+  </div>
+</div>

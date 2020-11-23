@@ -8,9 +8,9 @@ import { ShortAnswer } from 'src/app/models/short-answer.model'
   styleUrls: ['./short-answer.component.scss']
 })
 export class ShortAnswerComponent implements OnInit {
-  @Input() data: QuizQuestion<ShortAnswer>;
+  @Input() data: ShortAnswer;
 
-  @Output() onAnswer = new EventEmitter<string>();
+  @Output() onAnswer = new EventEmitter();
 
   answer: string = '';
 
@@ -19,7 +19,10 @@ export class ShortAnswerComponent implements OnInit {
   }
 
   answerQuestion() {
-    this.onAnswer.emit(this.answer);
+    this.onAnswer.emit({
+      question: this.data.question,
+      answer: this.answer
+    });
   }
 
   ngOnInit() {

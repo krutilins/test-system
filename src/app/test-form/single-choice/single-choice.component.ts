@@ -1,4 +1,6 @@
 import {Component, OnInit, Input, Output, EventEmitter } from '@angular/core'
+import { QuizQuestion } from 'src/app/models/quiz-quesiton.model';
+import { SingleChoice } from 'src/app/models/single-choice.model';
 
 @Component({
   selector: 'app-single-choice',
@@ -6,10 +8,10 @@ import {Component, OnInit, Input, Output, EventEmitter } from '@angular/core'
   styleUrls: ['./single-choice.component.scss']
 })
 export class SingleChoiceComponent implements OnInit {
-  @Input('data') quizQuestion
+  @Input() data: SingleChoice;
 
 
-  @Output() onAnswer = new EventEmitter<string>();
+  @Output() onAnswer = new EventEmitter();
 
   selectedAnswer: string = '';
 
@@ -17,7 +19,10 @@ export class SingleChoiceComponent implements OnInit {
   }
 
   answerQuestion() {
-    this.onAnswer.emit(this.selectedAnswer);
+    this.onAnswer.emit({
+      question: this.data.question,
+      answer: this.selectedAnswer
+    });
   }
 
   ngOnInit() {

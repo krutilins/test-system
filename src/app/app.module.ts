@@ -1,18 +1,19 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
+import { SharedModule } from './shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
+import { TestFormModule } from './test-form/test-form.module';
+import { TestHistoryModule } from './test-history/test-history-list.module';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { TestListComponent } from './components/test-list/test-list.component';
-import { TestCardComponent } from './components/test-card/test-card.component';
-import { TestHistoryComponent } from './components/test-history/test-history.component';
 import { FormConstructorModule } from './form-constructor/form-constructor.module';
-import { SharedModule } from './shared/shared.module';
-import { TestFormModule } from './test-form/test-form.module';
+import { TestCardComponent } from './components/test-card/test-card.component';
 
 @NgModule({
   declarations: [
@@ -20,16 +21,17 @@ import { TestFormModule } from './test-form/test-form.module';
     ToolbarComponent,
     SidebarComponent,
     TestListComponent,
-    TestCardComponent,
-    TestHistoryComponent,
+    TestCardComponent
   ],
   imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
     SharedModule,
+    BrowserModule,
     TestFormModule,
     AppRoutingModule,
+    HttpClientModule,
+    TestHistoryModule,
     FormConstructorModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,15 +1,15 @@
 <mat-nav-list class='container'>
   <div *ngFor="let link of links">
-    <a matLine [routerLink]="[link.link]">
+    <a matLine [routerLink]="[link.url]">
       <mat-list-item>
         {{ link.text }}
       </mat-list-item>
     </a>
   </div>
-  <mat-list-item>
+  <!-- <mat-list-item>
     <button mat-button>Sign out</button>
   </mat-list-item>
   <mat-list-item>
     <button mat-button>Sign in</button>
-  </mat-list-item>
+  </mat-list-item> -->
 </mat-nav-list>

@@ -1,0 +1,7 @@
+<div *ngIf="!testCards.length">
+  History list is empty
+</div>
+
+<div *ngFor="let testCard of testCards">
+  <test-history-test-history-card [testCard]="testCard"></test-history-test-history-card>
+</div>

@@ -8,15 +8,15 @@ import { Component, OnInit } from '@angular/core'
 export class SidebarComponent implements OnInit {
   links = [
     {
-      link: '/',
+      url: '/',
       text:  'Take tests'
     },
     {
-      link: '/tests-history',
+      url: '/test-history-list',
       text:  'Test history'
     },
     {
-      link: '/constructor',
+      url: '/constructor',
       text: 'Constructor'
     }
   ]

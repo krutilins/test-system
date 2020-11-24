@@ -1,3 +1,3 @@
 export interface LongAnswer {
-  question: string
+  question: string;
 }

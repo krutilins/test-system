@@ -1,4 +1,3 @@
-import { Data } from '@angular/router';
 import { QuizAnswer } from './quiz-answer.model';
 
 interface ResultSection {

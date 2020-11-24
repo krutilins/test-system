@@ -1,27 +1,30 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { ShortAnswer } from 'src/app/models/short-answer.model';
+import { ShortAnswer } from 'src/app/shared//models/short-answer.model';
 
 @Component({
-  selector: 'form-constructor-short-answer-creator',
+  selector: 'app-short-answer-creator',
   templateUrl: 'short-answer-creator.component.html',
-  styleUrls: ['short-answer-creator.component.scss']
+  styleUrls: ['short-answer-creator.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ShortAnswerCreatorComponent implements OnInit {
-  @Output() onBlur = new EventEmitter<ShortAnswer>()
+  @Output() blurItem = new EventEmitter<ShortAnswer>();
 
   form: FormGroup;
 
-  constructor() {  }
-
-  ngOnInit() {
-    this.form = new FormGroup({
-      question: new FormControl('Untitled question')
-    })
+  ngOnInit(): void {
+    this.initShortAnswerCreator();
   }
 
-  updateQuestion() {
-    this.onBlur.emit(this.form.value);
+  private initShortAnswerCreator(): void {
+    this.form = new FormGroup({
+      question: new FormControl('Untitled question')
+    });
+  }
+
+  updateQuestion(): void {
+    this.blurItem.emit(this.form.value);
   }
 
 }

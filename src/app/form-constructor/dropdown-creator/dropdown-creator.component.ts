@@ -1,11 +1,12 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
-import { Dropdown } from 'src/app/models/dropdown.model';
+import { Dropdown } from 'src/app/shared/models/dropdown.model';
 
 @Component({
-  selector: 'form-constructor-dropdown-creator',
+  selector: 'app-dropdown-creator',
   templateUrl: 'dropdown-creator.component.html',
-  styleUrls: ['dropdown-creator.component.scss']
+  styleUrls: ['dropdown-creator.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class DropdownCreatorComponent implements OnInit {
@@ -17,26 +18,26 @@ export class DropdownCreatorComponent implements OnInit {
 
   options: FormArray = new FormArray([
     new FormControl('Option')
-  ])
+  ]);
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.form = new FormGroup({
       question: new FormControl('Untitled question'),
       options: this.options
-    })
+    });
   }
 
-  updateQuestion() {
+  updateQuestion(): void {
     this.questionChange.emit(this.form.value);
   }
 
-  updateOptions() {
+  updateOptions(): void {
     this.optionsChange.emit(this.form.value);
   }
 
-  addOption() {
-    (<FormArray>this.form.get('options')).push(new FormControl('Option'))
+  addOption(): void {
+    (this.form.get('options') as FormArray).push(new FormControl('Option'));
   }
 }

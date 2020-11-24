@@ -21,7 +21,7 @@ import { TestCardComponent } from './components/test-card/test-card.component';
     ToolbarComponent,
     SidebarComponent,
     TestListComponent,
-    TestCardComponent
+    TestCardComponent,
   ],
   imports: [
     SharedModule,
@@ -33,7 +33,9 @@ import { TestCardComponent } from './components/test-card/test-card.component';
     FormConstructorModule,
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,19 +1,20 @@
 import { CdkDragDrop } from '@angular/cdk/drag-drop';
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core"
-import { FormSection } from 'src/app/models/form-section.model';
-import { QuestionType } from 'src/app/models/question-type.model';
-import { QuizQuestion } from 'src/app/models/quiz-quesiton.model';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { FormSection } from 'src/app/shared//models/form-section.model';
+import { QuestionType } from 'src/app/shared//models/question-type.model';
+import { QuizQuestion } from 'src/app/shared//models/quiz-quesiton.model';
 import { v4 as uuidv4 } from 'uuid';
 
 @Component({
-  selector: 'form-constructor-form-section-creator',
+  selector: 'app-form-section-creator',
   templateUrl: './form-section-creator.component.html',
-  styleUrls: ['./form-section-creator.component.scss']
+  styleUrls: ['./form-section-creator.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FormSectionCreatorComponent implements OnInit {
+export class FormSectionCreatorComponent {
   @Input() formSection: FormSection;
 
-  @Output() onDrop = new EventEmitter();
+  @Output() dropItem = new EventEmitter();
 
   options: string[] = [
     'Short answer',
@@ -21,36 +22,30 @@ export class FormSectionCreatorComponent implements OnInit {
     'Single choice',
     'Multiple choice',
     'Dropdown'
-  ]
+  ];
 
   questionType = QuestionType;
 
-  constructor() {}
-
-  ngOnInit() {
-
-  }
-
-  changeQuestionType(index: number, question: QuizQuestion<unknown>) {
+  changeQuestionType(index: number, question: QuizQuestion<unknown>): void {
     this.formSection.questionList[index] = question;
   }
 
-  updateQuestionList(index: number, question: QuizQuestion<unknown>) {
+  updateQuestionList(index: number, question: QuizQuestion<unknown>): void {
     console.log(index, question);
     this.formSection.questionList[index].data = question;
   }
 
-  addQuestion(formSection: FormSection) {
+  addQuestion(formSection: FormSection): void {
     formSection.questionList.push({
       type: this.questionType.ShortAnswer,
       id: uuidv4(),
       data: {
-        question: "Untitled question"
+        question: 'Untitled question'
       }
-    })
+    });
   }
 
-  drop($event: CdkDragDrop<string[]>) {
-    this.onDrop.emit($event);
+  drop($event: CdkDragDrop<string[]>): void {
+    this.dropItem.emit($event);
   }
 }

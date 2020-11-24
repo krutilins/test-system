@@ -6,7 +6,7 @@ const routes: Routes = [
   {
     path: 'test/:id', component: TestFormComponent
   },
-]
+];
 
 @NgModule({
   imports: [

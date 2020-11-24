@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core'
-import { Routes, RouterModule } from '@angular/router'
-import { TestHistoryListComponent } from './test-history-list.component'
-import { TestHistoryComponent } from './test-history/test-history.component'
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { TestHistoryListComponent } from './test-history-list.component';
+import { TestHistoryComponent } from './test-history/test-history.component';
 
 const routes: Routes = [
   {
@@ -10,7 +10,7 @@ const routes: Routes = [
   {
     path: 'test-history/:id', component: TestHistoryComponent
   }
-]
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

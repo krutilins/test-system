@@ -16,10 +16,10 @@
 </mat-card>
 <div cdkDropListGroup class="form-constructor">
   <div *ngFor="let formSection of testForm.formSections">
-    <form-constructor-form-section-creator
+    <app-form-section-creator
       [formSection]="formSection"
-      (onDrop)="drop($event)"
-    ></form-constructor-form-section-creator>
+      (dropItem)="replaceElement($event)"
+    ></app-form-section-creator>
   </div>
 </div>
 <button mat-button (click)="addSection()">Add section</button>

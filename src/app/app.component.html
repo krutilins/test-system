@@ -3,7 +3,7 @@
     <app-sidebar></app-sidebar>
   </mat-drawer>
   <mat-drawer-content>
-    <app-toolbar [menuOpened]="menuOpened" (onChangeMenuState)="menuOpened = !menuOpened"></app-toolbar>
+    <app-toolbar [menuOpened]="menuOpened" (menuStateChange)="menuOpened = !menuOpened"></app-toolbar>
     <router-outlet></router-outlet>
   </mat-drawer-content>
 </mat-drawer-container>

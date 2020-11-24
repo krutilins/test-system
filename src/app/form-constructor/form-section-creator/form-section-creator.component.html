@@ -52,36 +52,36 @@
 
       <div [ngSwitch]="question.type">
         <div *ngSwitchCase="questionType.ShortAnswer">
-          <form-constructor-short-answer-creator
-            (onBlur)="updateQuestionList(i, $event)"
-          ></form-constructor-short-answer-creator>
+          <app-short-answer-creator
+            (blurItem)="updateQuestionList(i, $event)"
+          ></app-short-answer-creator>
         </div>
 
         <div *ngSwitchCase="questionType.LongAnswer">
-          <form-constructor-long-answer-creator
-            (onBlur)="updateQuestionList(i, $event)"
-          ></form-constructor-long-answer-creator>
+          <app-long-answer-creator
+            (blurItem)="updateQuestionList(i, $event)"
+          ></app-long-answer-creator>
         </div>
 
         <div *ngSwitchCase="questionType.SingleChoice">
-          <form-constructor-single-choice-creator
+          <app-single-choice-creator
             (optionsChange)="updateQuestionList(i, $event)"
             (questionChange)="updateQuestionList(i, $event)"
-          ></form-constructor-single-choice-creator>
+          ></app-single-choice-creator>
         </div>
 
         <div *ngSwitchCase="questionType.MultipleChoice">
-          <form-constructor-multiple-choice-creator
+          <app-multiple-choice-creator
             (optionsChange)="updateQuestionList(i, $event)"
             (questionChange)="updateQuestionList(i, $event)"
-          ></form-constructor-multiple-choice-creator>
+          ></app-multiple-choice-creator>
         </div>
 
         <div *ngSwitchCase="questionType.DropdownChoice">
-          <form-constructor-dropdown-creator
+          <app-dropdown-creator
             (optionsChange)="updateQuestionList(i, $event)"
             (questionChange)="updateQuestionList(i, $event)"
-          ></form-constructor-dropdown-creator>
+          ></app-dropdown-creator>
         </div>
       </div>
     </div>

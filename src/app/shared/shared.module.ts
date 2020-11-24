@@ -1,10 +1,9 @@
-import {NgModule} from '@angular/core'
+import {NgModule} from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from './material/material.module';
 
 @NgModule({
-  declarations: [
-  ],
+  declarations: [],
   imports: [
     MaterialModule,
     FormsModule,

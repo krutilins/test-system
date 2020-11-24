@@ -1,11 +1,12 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
-import { SingleChoice } from 'src/app/models/single-choice.model';
+import { SingleChoice } from 'src/app/shared//models/single-choice.model';
 
 @Component({
-  selector: 'form-constructor-single-choice-creator',
+  selector: 'app-single-choice-creator',
   templateUrl: 'single-choice-creator.component.html',
-  styleUrls: ['single-choice-creator.component.scss']
+  styleUrls: ['single-choice-creator.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class SingleChoiceCreatorComponent implements OnInit {
@@ -17,26 +18,30 @@ export class SingleChoiceCreatorComponent implements OnInit {
 
   options: FormArray = new FormArray([
     new FormControl('Option')
-  ])
+  ]);
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.initSingleChoiceCreator();
+  }
+
+  private initSingleChoiceCreator(): void {
     this.form = new FormGroup({
       question: new FormControl('Untitled question'),
       options: this.options
-    })
+    });
   }
 
-  updateQuestion() {
+  updateQuestion(): void {
     this.questionChange.emit(this.form.value);
   }
 
-  updateOptions() {
+  updateOptions(): void {
     this.optionsChange.emit(this.form.value);
   }
 
-  addOption() {
-    (<FormArray>this.form.get('options')).push(new FormControl('Option'))
+  addOption(): void {
+    (this.form.get('options') as FormArray).push(new FormControl('Option'));
   }
 }

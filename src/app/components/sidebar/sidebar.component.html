@@ -1,15 +1,9 @@
-<mat-nav-list class='container'>
-  <div *ngFor="let link of links">
-    <a matLine [routerLink]="[link.url]">
-      <mat-list-item>
-        {{ link.text }}
+<mat-nav-list class='sidebar'>
+  <div class="sidebar__block" *ngFor="let textLink of textLinks">
+    <a matLine class="sidebar__link" [routerLink]="[textLink.url]">
+      <mat-list-item class="sidebar__item">
+        {{ textLink.text }}
       </mat-list-item>
     </a>
   </div>
-  <!-- <mat-list-item>
-    <button mat-button>Sign out</button>
-  </mat-list-item>
-  <mat-list-item>
-    <button mat-button>Sign in</button>
-  </mat-list-item> -->
 </mat-nav-list>

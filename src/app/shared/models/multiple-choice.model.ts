@@ -1,4 +1,4 @@
 export interface MultipleChoice {
   question: string;
-  options: string[]
+  options: string[];
 }

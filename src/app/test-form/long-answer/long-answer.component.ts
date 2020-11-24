@@ -1,31 +1,23 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
-import { LongAnswer } from 'src/app/models/long-answer.model';
-import { QuizQuestion } from 'src/app/models/quiz-quesiton.model'
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { LongAnswer } from 'src/app/shared//models/long-answer.model';
 
 @Component({
   selector: 'app-long-answer',
   templateUrl: './long-answer.component.html',
-  styleUrls: ['./long-answer.component.scss']
+  styleUrls: ['./long-answer.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LongAnswerComponent implements OnInit {
+export class LongAnswerComponent {
   @Input() data: LongAnswer;
 
-  @Output() onAnswer = new EventEmitter();
+  @Output() answerChange = new EventEmitter();
 
-  answer: string
+  answer = '';
 
-  constructor() {
-
-  }
-
-  answerQuestion() {
-    this.onAnswer.emit({
+  answerQuestion(): void {
+    this.answerChange.emit({
       question: this.data.question,
       answer: this.answer
     });
-  }
-
-  ngOnInit() {
-
   }
 }

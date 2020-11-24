@@ -1,31 +1,23 @@
-import {Component, OnInit, Input, Output, EventEmitter } from '@angular/core'
-import { QuizQuestion } from 'src/app/models/quiz-quesiton.model';
-import { SingleChoice } from 'src/app/models/single-choice.model';
+import {Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { SingleChoice } from 'src/app/shared//models/single-choice.model';
 
 @Component({
   selector: 'app-single-choice',
   templateUrl: './single-choice.component.html',
-  styleUrls: ['./single-choice.component.scss']
+  styleUrls: ['./single-choice.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SingleChoiceComponent implements OnInit {
+export class SingleChoiceComponent {
   @Input() data: SingleChoice;
 
+  @Output() answerChange = new EventEmitter();
 
-  @Output() onAnswer = new EventEmitter();
+  selectedAnswer = '';
 
-  selectedAnswer: string = '';
-
-  constructor() {
-  }
-
-  answerQuestion() {
-    this.onAnswer.emit({
+  answerQuestion(): void {
+    this.answerChange.emit({
       question: this.data.question,
       answer: this.selectedAnswer
     });
-  }
-
-  ngOnInit() {
-
   }
 }

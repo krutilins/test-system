@@ -1,6 +1,6 @@
-<mat-card>
-  <mat-card-title>{{ testCard.title }}</mat-card-title>
+<mat-card class="test-card">
+  <mat-card-title class="test-card__title">{{ testCard.title }}</mat-card-title>
   <mat-card-actions>
-    <button mat-button (click)="goTo()">Go to {{ testCard.id }}</button>
+    <button class="test-card__button" mat-button (click)="goTo()">Start test</button>
   </mat-card-actions>
 </mat-card>

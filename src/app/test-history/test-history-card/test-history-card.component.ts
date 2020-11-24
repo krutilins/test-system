@@ -1,24 +1,21 @@
-import { Component, Input, OnInit } from "@angular/core"
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { TestCard } from 'src/app/models/test-card.model';
+import { TestCard } from 'src/app/shared//models/test-card.model';
 
 @Component({
-  selector: 'test-history-test-history-card',
+  selector: 'app-test-history-card',
   templateUrl: './test-history-card.component.html',
-  styleUrls: ['./test-history-card.component.scss']
+  styleUrls: ['./test-history-card.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TestHistoryCardComponent implements OnInit {
+export class TestHistoryCardComponent {
   @Input() testCard: TestCard;
 
   constructor(private router: Router) {
 
   }
 
-  goTo() {
+  goTo(): void {
     this.router.navigate(['/test-history', this.testCard.id]);
-  }
-
-  ngOnInit() {
-
   }
 }

@@ -1,27 +1,30 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { LongAnswer } from 'src/app/models/long-answer.model';
+import { LongAnswer } from 'src/app/shared//models/long-answer.model';
 
 @Component({
-  selector: 'form-constructor-long-answer-creator',
+  selector: 'app-long-answer-creator',
   templateUrl: 'long-answer-creator.component.html',
-  styleUrls: ['long-answer-creator.component.scss']
+  styleUrls: ['long-answer-creator.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class LongAnswerCreatorComponent implements OnInit {
-  @Output() onBlur = new EventEmitter<LongAnswer>()
+  @Output() blurItem = new EventEmitter<LongAnswer>();
 
   form: FormGroup;
 
-  constructor() {  }
-
-  ngOnInit() {
-    this.form = new FormGroup({
-      question: new FormControl('Untitled question')
-    })
+  ngOnInit(): void {
+    this.initLongAnswerCreator();
   }
 
-  updateQuestion() {
-    this.onBlur.emit(this.form.value);
+  private initLongAnswerCreator(): void {
+    this.form = new FormGroup({
+      question: new FormControl('Untitled question')
+    });
+  }
+
+  updateQuestion(): void {
+    this.blurItem.emit(this.form.value);
   }
 }

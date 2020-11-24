@@ -32,7 +32,7 @@ const MaterialModules = [
   MatCheckboxModule,
   MatFormFieldModule,
   TextFieldModule,
-]
+];
 
 @NgModule({
   imports: [MaterialModules],

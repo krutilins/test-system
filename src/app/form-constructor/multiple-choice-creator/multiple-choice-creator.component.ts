@@ -20,8 +20,6 @@ export class MultipleChoiceCreatorComponent implements OnInit {
     new FormControl('Option')
   ]);
 
-  constructor() { }
-
   ngOnInit(): void {
     this.initMultipleChoiceCreator();
   }

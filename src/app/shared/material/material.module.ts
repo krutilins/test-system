@@ -13,8 +13,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
-
 
 const MaterialModules = [
   MatCardModule,
@@ -25,13 +25,15 @@ const MaterialModules = [
   DragDropModule,
   MatButtonModule,
   MatSelectModule,
+  TextFieldModule,
   MatDividerModule,
   MatSidenavModule,
   MatToolbarModule,
   MatGridListModule,
   MatCheckboxModule,
   MatFormFieldModule,
-  TextFieldModule,
+  MatPaginatorModule,
+
 ];
 
 @NgModule({

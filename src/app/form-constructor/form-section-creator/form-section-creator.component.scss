@@ -1,7 +1,25 @@
+.form-constructor__section-editor {
+  width: 100%;
+}
+
+.add-question-button {
+  display: flex;
+  justify-content: center;
+}
+
+.example-form {
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
 
 .form-constructor__list {
   border: solid 1px #ccc;
+  width: 100%;
   min-height: 60px;
+  margin-bottom: 20px;
   background: white;
   border-radius: 4px;
   overflow: hidden;
@@ -18,6 +36,7 @@
   justify-content: space-between;
   box-sizing: border-box;
   cursor: move;
+  width: 100%;
   background: white;
   font-size: 14px;
 }

@@ -20,8 +20,6 @@ export class SingleChoiceCreatorComponent implements OnInit {
     new FormControl('Option')
   ]);
 
-  constructor() { }
-
   ngOnInit(): void {
     this.initSingleChoiceCreator();
   }

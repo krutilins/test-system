@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TestResult } from 'src/app/shared//models/test-result.model';
 import { FormDataService } from 'src/app/shared/services/form-data.service';
@@ -12,7 +12,7 @@ import { FormDataService } from 'src/app/shared/services/form-data.service';
 export class TestHistoryComponent implements OnInit {
   testResult: TestResult;
 
-  constructor(private formDataService: FormDataService, private route: ActivatedRoute) {
+  constructor(private formDataService: FormDataService, private route: ActivatedRoute, private CDRef: ChangeDetectorRef) {
 
   }
 
@@ -22,6 +22,9 @@ export class TestHistoryComponent implements OnInit {
 
   private initTestAnswers(): void {
     this.formDataService.getSubmitedForm(this.route.snapshot.params.id)
-    .subscribe(response => this.testResult = response[0]);
+    .subscribe(testResult => {
+      this.testResult = testResult[0];
+      this.CDRef.detectChanges();
+    });
   }
 }

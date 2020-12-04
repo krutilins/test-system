@@ -1,25 +1,36 @@
 <div class="form-constructor__container">
   <div class="form-constructor__section-editor">
-    <mat-form-field>
-      <textarea
-        matInput
-        cdkTextareaAutosize
-        [(ngModel)]="formSection.sectionTitle"
-        [ngModelOptions]="{ standalone: true }"
-        placeholder="Section Title"
-      ></textarea>
-    </mat-form-field>
-    <mat-form-field>
-      <textarea
-        matInput
-        cdkTextareaAutosize
-        [(ngModel)]="formSection.sectionSubtitle"
-        [ngModelOptions]="{ standalone: true }"
-        placeholder="Form Description"
-      ></textarea>
-    </mat-form-field>
+    <mat-card color="warn">
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <textarea
+            matInput
+            cdkTextareaAutosize
+            [(ngModel)]="formSection.sectionTitle"
+            [ngModelOptions]="{ standalone: true }"
+            placeholder="Section Title"
+          ></textarea>
+        </mat-form-field>
+      </form>
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <textarea
+            matInput
+            cdkTextareaAutosize
+            [(ngModel)]="formSection.sectionSubtitle"
+            [ngModelOptions]="{ standalone: true }"
+            placeholder="Form Description"
+          ></textarea>
+        </mat-form-field>
+      </form>
+    </mat-card>
   </div>
-  <button mat-button (click)="addQuestion(formSection)">Add question</button>
+
+  <mat-card class="add-question-button">
+    <form >
+      <button mat-raised-button color="primary" (click)="addQuestion(formSection)">Add question</button>
+    </form>
+  </mat-card>
 
   <div
     cdkDropList
@@ -30,10 +41,11 @@
     <div
       *ngFor="let question of formSection.questionList; index as i"
       class="form-constructor__question-box"
+      class="example-full-width"
       cdkDrag
     >
-      <form>
-        <mat-form-field appearance="fill">
+      <form class="example-form">
+        <mat-form-field appearance="fill" class="example-full-width">
           <mat-label>Select</mat-label>
           <mat-select
             [(ngModel)]="question.type"
@@ -50,9 +62,9 @@
         </mat-form-field>
       </form>
 
-      <div [ngSwitch]="question.type">
-        <div *ngSwitchCase="questionType.ShortAnswer">
-          <app-short-answer-creator
+      <div [ngSwitch]="question.type" class="example-full-width">
+        <div *ngSwitchCase="questionType.ShortAnswer" class="example-full-width">
+          <app-short-answer-creator class="example-full-width"
             (blurItem)="updateQuestionList(i, $event)"
           ></app-short-answer-creator>
         </div>

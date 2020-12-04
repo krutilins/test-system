@@ -1,6 +1,9 @@
-<mat-nav-list class='sidebar'>
-  <div class="sidebar__block" *ngFor="let textLink of textLinks">
-    <a matLine class="sidebar__link" [routerLink]="[textLink.url]">
+<mat-nav-list class="sidebar">
+  <div
+    class="sidebar__block"
+    *ngFor="let textLink of textLinks"
+  >
+    <a matLine class="sidebar__link" [routerLink]="[textLink.url]" >
       <mat-list-item class="sidebar__item">
         {{ textLink.text }}
       </mat-list-item>

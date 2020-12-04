@@ -1,32 +1,35 @@
-<mat-card>
-  <mat-card-content>
-    <form [formGroup]="form">
-      <mat-form-field>
-        <textarea
-          matInput
-          cdktextareaAutosize
-          placeholder="Question"
-          formControlName="question"
-          (blur)="updateQuestion()"
-        ></textarea>
-      </mat-form-field>
+<mat-card class="example-full-width">
+  <form [formGroup]="form" class="example-form">
+    <mat-form-field class="example-full-width">
+      <textarea
+        matInput
+        cdkTextareaAutosize
+        placeholder="Question"
+        formControlName="question"
+        (blur)="updateQuestion()"
+      ></textarea>
+    </mat-form-field>
 
-      <section formGroupName="options">
-          <mat-checkbox
-            *ngFor="let option of options.controls; index as id"
-            disabled
-          >
-            <mat-form-field>
-              <input
-                matInput
-                [value]="option.value"
-                [formControlName]="id"
-                (blur)="updateOptions($event)"
-              />
-            </mat-form-field>
-          </mat-checkbox>
-          <button mat-button (click)="addOption()">Add option</button>
-      </section>
-    </form>
-  </mat-card-content>
+    <section formGroupName="options" class="checkbox-group">
+      <mat-checkbox
+        *ngFor="let option of options.controls; index as id"
+        disabled
+        class="example-full-width"
+      >
+        <mat-form-field class="example-full-width">
+          <textarea
+            class="example-full-width"
+            cdkTextareaAutosize
+            matInput
+            [value]="option.value"
+            [formControlName]="id"
+            (blur)="updateOptions($event)"
+          ></textarea>
+        </mat-form-field>
+      </mat-checkbox>
+    </section>
+    <button mat-raised-button color="primary" (click)="addOption()">
+      Add option
+    </button>
+  </form>
 </mat-card>

@@ -1,19 +1,13 @@
 <mat-card>
-  <mat-card-content>
-    <form [formGroup]="form">
-      <mat-form-field>
-        <textarea
-          matInput
-          cdkTextareaAutosize
-          placeholder="Question"
-          formControlName="question"
-          (blur)="updateQuestion()"
-        ></textarea>
-      </mat-form-field>
-
-      <mat-form-field>
-        <input matInput disabled placeholder="Short answer" />
-      </mat-form-field>
-    </form>
-  </mat-card-content>
+  <form [formGroup]="form" class="example-form">
+    <mat-form-field class="example-full-width">
+      <textarea
+        matInput
+        cdkTextareaAutosize
+        placeholder="Question"
+        formControlName="question"
+        (blur)="updateQuestion()"
+      ></textarea>
+    </mat-form-field>
+  </form>
 </mat-card>

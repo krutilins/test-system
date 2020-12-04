@@ -1,15 +1,26 @@
 <div class="test-form">
-  <div>
-    <h1>{{ testResult?.title }}</h1>
-  </div>
-  <div *ngFor="let section of testResult?.sections">
-    <h2>{{ section.title }}</h2>
-    <h3>{{ section.subtitle }}</h3>
-    <div *ngFor="let quizAnswer of section.quizAnswers;">
-      <mat-card>
-        <div>Question: {{ quizAnswer.question }}</div>
-        <div>Answer: {{ quizAnswer.answer }}</div>
-      </mat-card>
+  <mat-card class="card">
+    <div>
+      <h1>{{ testResult?.title }}</h1>
     </div>
+  </mat-card>
+  <div *ngFor="let section of testResult?.sections" class="card">
+    <mat-card>
+      <mat-card-title>
+        <h2>{{ section.title }}</h2>
+      </mat-card-title>
+      <mat-card-title>
+        <h3>{{ section.subtitle }}</h3>
+      </mat-card-title>
+
+      <mat-card-content>
+        <div *ngFor="let quizAnswer of section.quizAnswers" class="card">
+          <mat-card>
+            <div>Question: {{ quizAnswer.question }}</div>
+            <div>Answer: {{ quizAnswer.answer }}</div>
+          </mat-card>
+        </div>
+      </mat-card-content>
+    </mat-card>
   </div>
 </div>

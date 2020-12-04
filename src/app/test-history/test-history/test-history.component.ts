@@ -22,9 +22,9 @@ export class TestHistoryComponent implements OnInit {
 
   private initTestAnswers(): void {
     this.formDataService.getSubmitedForm(this.route.snapshot.params.id)
-    .subscribe(testResult => {
-      this.testResult = testResult[0];
-      this.CDRef.detectChanges();
-    });
+      .subscribe(testResult => {
+        this.testResult = testResult[0];
+        this.CDRef.detectChanges();
+      });
   }
 }

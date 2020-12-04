@@ -1,0 +1,47 @@
+<div class="form-constructor">
+  <div class="form-constructor__section">
+    <mat-card>
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <textarea
+            matInput
+            cdkTextareaAutosize
+            placeholder="Form Title"
+            [(ngModel)]="testForm.title"
+            [ngModelOptions]="{ standalone: true }"
+          ></textarea>
+        </mat-form-field>
+      </form>
+    </mat-card>
+  </div>
+
+  <div class="form-constructor__section">
+    <div cdkDropListGroup>
+      <div *ngFor="let formSection of testForm.formSections">
+        <app-form-section-creator
+          [formSection]="formSection"
+          (dropItem)="replaceElement($event)"
+        ></app-form-section-creator>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-constructor__section">
+    <mat-card>
+      <mat-card-actions>
+        <div class="form-constructor__buttons">
+          <div class="form-constructor__button">
+            <button mat-raised-button color="primary" (click)="addSection()">
+              Add section
+            </button>
+          </div>
+          <div class="form-constructor__button">
+            <button mat-raised-button color="primary" (click)="postForm()">
+              Add form
+            </button>
+          </div>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

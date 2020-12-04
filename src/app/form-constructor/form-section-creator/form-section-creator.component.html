@@ -1,0 +1,101 @@
+<div class="form-constructor__container">
+  <div class="form-constructor__section-editor">
+    <mat-card color="warn">
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <textarea
+            matInput
+            cdkTextareaAutosize
+            [(ngModel)]="formSection.sectionTitle"
+            [ngModelOptions]="{ standalone: true }"
+            placeholder="Section Title"
+          ></textarea>
+        </mat-form-field>
+      </form>
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <textarea
+            matInput
+            cdkTextareaAutosize
+            [(ngModel)]="formSection.sectionSubtitle"
+            [ngModelOptions]="{ standalone: true }"
+            placeholder="Form Description"
+          ></textarea>
+        </mat-form-field>
+      </form>
+    </mat-card>
+  </div>
+
+  <mat-card class="add-question-button">
+    <form >
+      <button mat-raised-button color="primary" (click)="addQuestion(formSection)">Add question</button>
+    </form>
+  </mat-card>
+
+  <div
+    cdkDropList
+    [cdkDropListData]="formSection.questionList"
+    (cdkDropListDropped)="drop($event)"
+    class="form-constructor__list"
+  >
+    <div
+      *ngFor="let question of formSection.questionList; index as i"
+      class="form-constructor__question-box"
+      class="example-full-width"
+      cdkDrag
+    >
+      <form class="example-form">
+        <mat-form-field appearance="fill" class="example-full-width">
+          <mat-label>Select</mat-label>
+          <mat-select
+            [(ngModel)]="question.type"
+            [ngModelOptions]="{ standalone: true }"
+            (ngModelChange)="updateQuestionList(i, question)"
+          >
+            <mat-option
+              *ngFor="let option of options; index as id"
+              [value]="id + 1"
+            >
+              {{ option }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </form>
+
+      <div [ngSwitch]="question.type" class="example-full-width">
+        <div *ngSwitchCase="questionType.ShortAnswer" class="example-full-width">
+          <app-short-answer-creator class="example-full-width"
+            (blurItem)="updateQuestionList(i, $event)"
+          ></app-short-answer-creator>
+        </div>
+
+        <div *ngSwitchCase="questionType.LongAnswer">
+          <app-long-answer-creator
+            (blurItem)="updateQuestionList(i, $event)"
+          ></app-long-answer-creator>
+        </div>
+
+        <div *ngSwitchCase="questionType.SingleChoice">
+          <app-single-choice-creator
+            (optionsChange)="updateQuestionList(i, $event)"
+            (questionChange)="updateQuestionList(i, $event)"
+          ></app-single-choice-creator>
+        </div>
+
+        <div *ngSwitchCase="questionType.MultipleChoice">
+          <app-multiple-choice-creator
+            (optionsChange)="updateQuestionList(i, $event)"
+            (questionChange)="updateQuestionList(i, $event)"
+          ></app-multiple-choice-creator>
+        </div>
+
+        <div *ngSwitchCase="questionType.DropdownChoice">
+          <app-dropdown-creator
+            (optionsChange)="updateQuestionList(i, $event)"
+            (questionChange)="updateQuestionList(i, $event)"
+          ></app-dropdown-creator>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

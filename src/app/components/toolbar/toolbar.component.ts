@@ -1,25 +1,18 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
-  styleUrls: ['./toolbar.component.scss']
+  styleUrls: ['./toolbar.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ToolbarComponent implements OnInit {
-  @Input() menuOpened: boolean = true
-  @Output() onChangeMenuState = new EventEmitter<boolean>()
+export class ToolbarComponent {
+  @Input() menuOpened = true;
 
-  constructor() {
+  @Output() menuStateChange = new EventEmitter<boolean>();
 
+  toggleDrawer(): void {
+    this.menuOpened = !this.menuOpened;
+    this.menuStateChange.emit(this.menuOpened);
   }
-
-  ngOnInit() {
-
-  }
-
-  toggle() {
-    this.menuOpened = !this.menuOpened
-    this.onChangeMenuState.emit(this.menuOpened)
-  }
-
 }

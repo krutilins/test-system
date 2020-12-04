@@ -1,26 +1,13 @@
-import { Component, DoCheck, OnInit } from '@angular/core'
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { TextLink } from 'src/app/shared//models/text-link.model';
+import { TEXT_LINKS } from './sidebar.config';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss']
+  styleUrls: ['./sidebar.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SidebarComponent implements OnInit {
-  links = [
-    {
-      link: '/',
-      text:  'Take tests'
-    },
-    {
-      link: '/tests-history',
-      text:  'Test history'
-    },
-    {
-      link: '/constructor',
-      text: 'Constructor'
-    }
-  ]
-  ngOnInit() {
-
-  }
+export class SidebarComponent {
+  textLinks: TextLink[] = TEXT_LINKS;
 }

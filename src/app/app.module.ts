@@ -1,22 +1,19 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './material/material.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LongAnswerComponent } from './components/long-answer/long-answer.component';
-import { ShortAnswerComponent } from './components/short-answer/short-answer.component';
+
+import { AppComponent } from './app.component';
+import { SharedModule } from './shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
+import { TestFormModule } from './test-form/test-form.module';
+import { TestHistoryModule } from './test-history/test-history-list.module';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { TestFromComponent } from './components/test-form/test-form.component';
-import { SingleChoiceComponent } from './components/single-choice/single-choice.component';
-import { MultipleChoiceComponent } from './components/multiple-choice/multiple-choice.component';
-import { DropdownChoiceComponent } from './components/dropdown-choice/dropdown-choice.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { ConstructorComponent } from './components/constructor/constructor.component';
-import { TestHistoryComponent } from './components/test-history/test-history.component';
 import { TestListComponent } from './components/test-list/test-list.component';
+import { FormConstructorModule } from './form-constructor/form-constructor.module';
+import { TestCardComponent } from './components/test-card/test-card.component';
 
 @NgModule({
   declarations: [
@@ -24,24 +21,21 @@ import { TestListComponent } from './components/test-list/test-list.component';
     ToolbarComponent,
     SidebarComponent,
     TestListComponent,
-    TestFromComponent,
-    LongAnswerComponent,
-    ConstructorComponent,
-    TestHistoryComponent,
-    ShortAnswerComponent,
-    SingleChoiceComponent,
-    MultipleChoiceComponent,
-    DropdownChoiceComponent,
+    TestCardComponent,
   ],
   imports: [
+    SharedModule,
     BrowserModule,
+    TestFormModule,
     AppRoutingModule,
+    HttpClientModule,
+    TestHistoryModule,
+    FormConstructorModule,
     BrowserAnimationsModule,
-    MaterialModule,
-    ReactiveFormsModule,
-    FormsModule
   ],
-  providers: [],
+  providers: [
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

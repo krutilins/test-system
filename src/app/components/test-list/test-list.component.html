@@ -1,2 +1,5 @@
-<p>test list works</p>
-<app-test-form></app-test-form>
+<div class="test-list">
+  <div *ngFor="let testCard of testCards">
+    <app-test-card [testCard]="testCard"></app-test-card>
+  </div>
+</div>

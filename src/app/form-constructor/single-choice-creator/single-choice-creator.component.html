@@ -1,0 +1,36 @@
+<mat-card class="example-form">
+  <form [formGroup]="form" class="example-form">
+    <mat-form-field class="example-full-width">
+      <textarea
+        matInput
+        cdkTextareaAutosize
+        placeholder="Question"
+        formControlName="question"
+        (blur)="updateQuestion()"
+      ></textarea>
+    </mat-form-field>
+
+    <section formGroupName="options" class="example-full-width">
+      <mat-radio-group class="example-full-width">
+        <mat-radio-button
+          *ngFor="let option of options.controls; index as id"
+          disabled
+          class="example-full-width"
+        >
+          <mat-form-field class="example-full-width">
+            <textarea
+              matInput
+              cdkTextareaAutosize
+              [value]="option.value"
+              [formControlName]="id"
+              (blur)="updateOptions($event)"
+            ></textarea>
+          </mat-form-field>
+        </mat-radio-button>
+      </mat-radio-group>
+    </section>
+    <button mat-raised-button color="primary" (click)="addOption()">
+      Add option
+    </button>
+  </form>
+</mat-card>

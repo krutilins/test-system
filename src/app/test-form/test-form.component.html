@@ -1,0 +1,54 @@
+<div class="test-form">
+  <div
+    *ngFor="let formSection of testForm?.formSections; index as sectionId"
+    class="test-form__section"
+  >
+    <mat-card class="card">
+      <h2>{{ formSection.sectionTitle }}</h2>
+      <h3>{{ formSection.sectionSubtitle }}</h3>
+    </mat-card>
+    <div class="card"
+      *ngFor="let quizQuestion of formSection.questionList; index as questionId"
+    >
+      <div [ngSwitch]="quizQuestion.type">
+        <div *ngSwitchCase="questionType.ShortAnswer">
+          <app-short-answer
+            [data]="quizQuestion.data"
+            (onAnswer)="updateAnswers(sectionId, questionId, $event)"
+          ></app-short-answer>
+        </div>
+
+        <div *ngSwitchCase="questionType.LongAnswer">
+          <app-long-answer
+            [data]="quizQuestion.data"
+            (onAnswer)="updateAnswers(sectionId, questionId, $event)"
+          ></app-long-answer>
+        </div>
+
+        <div *ngSwitchCase="questionType.SingleChoice">
+          <app-single-choice
+            [data]="quizQuestion.data"
+            (onAnswer)="updateAnswers(sectionId, questionId, $event)"
+          ></app-single-choice>
+        </div>
+
+        <div *ngSwitchCase="questionType.MultipleChoice">
+          <app-multiple-choice
+            [data]="quizQuestion.data"
+            (onAnswer)="updateAnswers(sectionId, questionId, $event)"
+          ></app-multiple-choice>
+        </div>
+
+        <div *ngSwitchCase="questionType.DropdownChoice">
+          <app-dropdown-choice
+            [data]="quizQuestion.data"
+            (onAnswer)="updateAnswers(sectionId, questionId, $event)"
+          ></app-dropdown-choice>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="submit">
+    <button mat-raised-button color="primary" (click)="submitForm()" class="button">Submit</button>
+  </div>
+</div>

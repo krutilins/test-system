@@ -31,7 +31,6 @@ export class FormSectionCreatorComponent {
   }
 
   updateQuestionList(index: number, question: QuizQuestion<unknown>): void {
-    console.log(index, question);
     this.formSection.questionList[index].data = question;
   }
 

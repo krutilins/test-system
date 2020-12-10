@@ -43,7 +43,7 @@ export class FormConstructorComponent implements OnInit {
     this.formDataService.addTestCard({
       id: this.id,
       title: this.testForm.title
-    }).subscribe(() => this.CDRef.detectChanges());
+    }).subscribe();
 
     this.formDataService.addForm(this.testForm)
       .subscribe(() => {

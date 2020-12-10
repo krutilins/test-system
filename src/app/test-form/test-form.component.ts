@@ -56,6 +56,7 @@ export class TestFormComponent implements OnInit {
   }
 
   submitForm(): void {
+    console.log(this.testAnswers);
     this.formDataService.submitForm(this.testAnswers).subscribe(() => this.CDRef.detectChanges());
     this.formDataService.addSubmitedFormCard({
       title: this.testAnswers.title,

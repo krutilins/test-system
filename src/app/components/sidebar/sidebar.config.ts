@@ -1,7 +1,7 @@
 export const TEXT_LINKS = [
   {
     url: '/',
-    text: 'Take tests'
+    text: 'Tests'
   },
   {
     url: '/test-history-list',

@@ -1,5 +1,4 @@
 <div class="test-history-list">
-  <div *ngFor="let testCard of testCards">
-    <app-test-history-card [testCard]="testCard"></app-test-history-card>
-  </div>
+  <app-test-history-card *ngFor="let testCard of testCards" [testCard]="testCard"></app-test-history-card>
 </div>
+
